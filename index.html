@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kaizen Japanese - Improvement Through Language</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root { --k-red: #d90429; --k-white: #ffffff; --k-gray: #f8f9fa; }
+        body { font-family: 'Poppins', sans-serif; background-color: #fff; color: #2b2d42; }
+        
+        /* Typography & Accents */
+        .text-red { color: var(--k-red); }
+        .bg-red { background-color: var(--k-red) !important; color: white; }
+        .section-title { font-weight: 800; letter-spacing: -1px; position: relative; padding-bottom: 15px; }
+        .section-title::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 50px; height: 4px; background: var(--k-red); }
+
+        /* Card Stylings */
+        .k-card { border: none; border-radius: 20px; background: white; box-shadow: 0 15px 35px rgba(0,0,0,0.05); transition: 0.3s ease; height: 100%; overflow: hidden; }
+        .k-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(217, 4, 41, 0.15); }
+        .icon-box { width: 60px; height: 60px; background: #fff1f2; color: var(--k-red); border-radius: 15px; display: flex; align-items: center; justify-content: center; font-size: 24px; margin-bottom: 20px; }
+
+        /* Sections */
+        .hero-section { background: linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)), url('https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?q=80&w=2070&auto=format&fit=crop'); background-size: cover; background-position: center; padding: 120px 0; border-bottom: 10px solid var(--k-red); }
+        .footer-bg { background: #1a1a1a; color: white; padding: 60px 0; }
+        
+        .whatsapp-float { position: fixed; bottom: 30px; right: 30px; background: #25d366; color: white; width: 65px; height: 65px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 35px; z-index: 1000; box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3); text-decoration: none; transition: 0.3s; }
+        .whatsapp-float:hover { transform: scale(1.1); color: white; }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg sticky-top bg-white border-bottom py-3">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-red" href="#">
+                <i class="fas fa-torii-gate me-2"></i>KAIZEN JAPANESE
+            </a>
+            <div class="d-flex align-items-center ms-auto">
+                <select id="langSwitcher" class="form-select border-red me-3 shadow-sm">
+                    <option value="en">English</option>
+                    <option value="tm">தமிழ்</option>
+                    <option value="jp">日本語</option>
+                </select>
+                <button class="btn btn-dark fw-bold rounded-pill px-4" onclick="loginAdmin()">Admin</button>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero-section text-center">
+        <div class="container">
+            <span class="badge bg-red mb-3 px-3 py-2 rounded-pill shadow">ONLINE CLASSES ONLY</span>
+            <h1 id="heroTitle" class="display-2 fw-bold mb-3">Mastering Japanese with <span class="text-red">Kaizen</span></h1>
+            <p id="heroSub" class="lead mb-4 fw-bold text-dark">Experience the art of language firsthand. Dive into the rich culture of Japan.</p>
+            <div class="d-flex justify-content-center gap-3">
+                <a href="#register" class="btn btn-danger btn-lg px-5 py-3 rounded-pill shadow-lg">Register Now</a>
+                <a href="https://wa.me/918610104213" class="btn btn-outline-dark btn-lg px-5 py-3 rounded-pill">Inquiry</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 id="objTitle" class="section-title">Course Objectives & Goals</h2>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="k-card p-4">
+                        <div class="icon-box"><i class="fas fa-comments"></i></div>
+                        <h4 id="fluencyTitle" class="fw-bold">Fluency</h4>
+                        <p id="fluencyDesc" class="text-muted">Become fluent in conversational Japanese through interactive exercises and real-world scenarios.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="k-card p-4">
+                        <div class="icon-box"><i class="fas fa-landmark"></i></div>
+                        <h4 id="cultureTitle" class="fw-bold">Cultural Insight</h4>
+                        <p id="cultureDesc" class="text-muted">Gain insight into Japanese customs, traditions, and societal norms as part of your journey.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="k-card p-4">
+                        <div class="icon-box"><i class="fas fa-map-signs"></i></div>
+                        <h4 id="practicalTitle" class="fw-bold">Practical Use</h4>
+                        <p id="practicalDesc" class="text-muted">Learn to navigate daily life in Japan, from ordering food to seeking directions with ease.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-5 mb-5 pt-5">
+                <h2 id="teachTitle" class="section-title">Teaching Methods</h2>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="k-card d-flex p-4 align-items-center">
+                        <div class="icon-box me-4 mb-0"><i class="fas fa-users"></i></div>
+                        <div>
+                            <h5 id="interTitle" class="fw-bold">Interactive Teaching</h5>
+                            <p id="interDesc" class="text-muted mb-0">Engage in group discussions, conversational practice, and role-playing.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="k-card d-flex p-4 align-items-center">
+                        <div class="icon-box me-4 mb-0"><i class="fas fa-book-open"></i></div>
+                        <div>
+                            <h5 id="authTitle" class="fw-bold">Authentic Resources</h5>
+                            <p id="authDesc" class="text-muted mb-0">Access authentic Japanese literature, media, and cultural artifacts for immersion.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container py-5">
+        <div class="text-center mb-5">
+            <h2 id="successTitle" class="section-title">Success Stories</h2>
+        </div>
+        <div class="row g-4" id="successGrid">
+            </div>
+    </section>
+
+    <section id="register" class="py-5 bg-red">
+        <div class="container text-white">
+            <div class="row align-items-center">
+                <div class="col-md-6 mb-4 mb-md-0">
+                    <h2 id="regSideTitle" class="display-5 fw-bold mb-3">Join the Future of Improvement</h2>
+                    <p id="regSideDesc">Register today and start your journey towards a career in Japan. Our online classes are designed for flexibility and depth.</p>
+                </div>
+                <div class="col-md-6">
+                    <div class="card p-4 border-0 shadow-lg text-dark">
+                        <form id="regForm">
+                            <div class="mb-3"><input type="text" id="sName" class="form-control p-3 border-0 bg-light" placeholder="Student Name" required></div>
+                            <div class="mb-3"><input type="email" id="sEmail" class="form-control p-3 border-0 bg-light" placeholder="Email Address" required></div>
+                            <button type="submit" id="regBtn" class="btn btn-danger w-100 py-3 fw-bold rounded-pill">Complete Registration</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer-bg">
+        <div class="container text-center">
+            <h3 class="fw-bold mb-4">Contact Information</h3>
+            <div class="row g-4 justify-content-center mb-5">
+                <div class="col-md-3"><i class="fas fa-envelope mb-2"></i><br>kaizenjapan542@gmail.com</div>
+                <div class="col-md-3"><i class="fas fa-phone mb-2"></i><br>+91 8610104213</div>
+                <div class="col-md-3"><i class="fab fa-instagram mb-2"></i><br>kaizen_ _ _ _japan</div>
+            </div>
+            <p class="text-muted mb-0">© 2024 Kaizen Japanese Institute. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/918610104213" class="whatsapp-float"><i class="fab fa-whatsapp"></i></a>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        const translations = {
+            en: {
+                heroTitle: "Mastering Japanese with <span class='text-red'>Kaizen</span>",
+                heroSub: "Experience the art of language firsthand. Dive into the rich culture of Japan.",
+                objTitle: "Course Objectives & Goals",
+                fluencyTitle: "Fluency", fluencyDesc: "Become fluent in conversational Japanese through interactive exercises.",
+                teachTitle: "Teaching Methods",
+                authTitle: "Authentic Resources", authDesc: "Access Japanese literature and media for immersion.",
+                regBtn: "Complete Registration"
+            },
+            tm: {
+                heroTitle: "<span class='text-red'>கைசன்</span> மூலம் ஜப்பானிய மொழியை கற்கலாம்",
+                heroSub: "மொழியின் கலையை அனுபவியுங்கள். ஜப்பானின் கலாச்சாரத்தில் மூழ்குங்கள்.",
+                objTitle: "பாடத்தின் நோக்கங்கள் மற்றும் குறிக்கோள்கள்",
+                fluencyTitle: "சரளமான பேச்சு", fluencyDesc: "ஊடாடும் பயிற்சிகள் மூலம் சரளமாக பேசக் கற்றுக்கொள்ளுங்கள்.",
+                teachTitle: "கற்பித்தல் முறைகள்",
+                authTitle: "உண்மையான வளங்கள்", authDesc: "ஜப்பானிய இலக்கியம் மற்றும் ஊடகங்களை அணுகுங்கள்.",
+                regBtn: "பதிவை பூர்த்தி செய்க"
+            },
+            jp: {
+                heroTitle: "<span class='text-red'>改善</span>による日本語学習",
+                heroSub: "言語の芸術を直接体験してください。日本の豊かな文化に飛び込みましょう。",
+                objTitle: "コースの目的と目標",
+                fluencyTitle: "流暢さ", fluencyDesc: "インタラクティブな演習を通じて流暢な日本語を身につけます。",
+                teachTitle: "教育方法",
+                authTitle: "本格的な教材", authDesc: "日本の文学やメディアにアクセスして没入型学習を行います。",
+                regBtn: "登録を完了する"
+            }
+        };
+
+        $('#langSwitcher').on('change', function() {
+            const l = $(this).val();
+            $('#heroTitle').html(translations[l].heroTitle);
+            $('#heroSub').text(translations[l].heroSub);
+            $('#objTitle').text(translations[l].objTitle);
+            $('#fluencyTitle').text(translations[l].fluencyTitle);
+            $('#fluencyDesc').text(translations[l].fluencyDesc);
+            $('#teachTitle').text(translations[l].teachTitle);
+            $('#authTitle').text(translations[l].authTitle);
+            $('#authDesc').text(translations[l].authDesc);
+            $('#regBtn').text(translations[l].regBtn);
+        });
+
+        // Simple Registration Data Logic
+        $('#regForm').on('submit', function(e) {
+            e.preventDefault();
+            let data = JSON.parse(localStorage.getItem('k_registrations')) || [];
+            data.push({ name: $('#sName').val(), email: $('#sEmail').val() });
+            localStorage.setItem('k_registrations', JSON.stringify(data));
+            alert("Success! Your registration is saved.");
+            this.reset();
+        });
+
+        function loginAdmin() {
+            let p = prompt("Password:");
+            if(p === "admin123") {
+                let regs = JSON.parse(localStorage.getItem('k_registrations')) || [];
+                let list = regs.map(r => `${r.name} (${r.email})`).join('\n');
+                alert("Registered Students:\n" + (list || "No registrations yet."));
+            }
+        }
+    </script>
+</body>
+</html>
