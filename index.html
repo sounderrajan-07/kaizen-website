@@ -7,45 +7,42 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        :root { --k-red: #d90429; --k-white: #ffffff; --k-gray: #f8f9fa; }
+        :root { --k-red: #d90429; --k-white: #ffffff; }
         body { font-family: 'Poppins', sans-serif; background-color: #fff; color: #2b2d42; }
         
-        /* Typography & Accents */
         .text-red { color: var(--k-red); }
         .bg-red { background-color: var(--k-red) !important; color: white; }
-        .section-title { font-weight: 800; letter-spacing: -1px; position: relative; padding-bottom: 15px; }
+        .section-title { font-weight: 800; position: relative; padding-bottom: 15px; text-align: center; }
         .section-title::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 50px; height: 4px; background: var(--k-red); }
 
-        /* Card Stylings */
-        .k-card { border: none; border-radius: 20px; background: white; box-shadow: 0 15px 35px rgba(0,0,0,0.05); transition: 0.3s ease; height: 100%; overflow: hidden; }
-        .k-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(217, 4, 41, 0.15); }
-        .icon-box { width: 60px; height: 60px; background: #fff1f2; color: var(--k-red); border-radius: 15px; display: flex; align-items: center; justify-content: center; font-size: 24px; margin-bottom: 20px; }
-
-        /* Sections */
-        .hero-section { background: linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)), url('https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?q=80&w=2070&auto=format&fit=crop'); background-size: cover; background-position: center; padding: 120px 0; border-bottom: 10px solid var(--k-red); }
-        .footer-bg { background: #1a1a1a; color: white; padding: 60px 0; }
+        .k-card { border: none; border-radius: 15px; background: white; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: 0.3s; height: 100%; border-bottom: 3px solid transparent; }
+        .k-card:hover { transform: translateY(-5px); border-bottom: 3px solid var(--k-red); }
         
-        .whatsapp-float { position: fixed; bottom: 30px; right: 30px; background: #25d366; color: white; width: 65px; height: 65px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 35px; z-index: 1000; box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3); text-decoration: none; transition: 0.3s; }
-        .whatsapp-float:hover { transform: scale(1.1); color: white; }
+        .hero-section { background: linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.8)), url('https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=1500'); background-size: cover; padding: 100px 0; border-bottom: 5px solid var(--k-red); }
+        
+        .whatsapp-float { position: fixed; bottom: 30px; right: 30px; background: #25d366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; z-index: 1000; box-shadow: 0 5px 15px rgba(0,0,0,0.2); text-decoration: none; }
+        
+        #adminSection { display: none; background: #fef2f2; border: 2px dashed var(--k-red); border-radius: 20px; padding: 40px; margin-top: 50px; }
     </style>
 </head>
 <body>
 
     <nav class="navbar navbar-expand-lg sticky-top bg-white border-bottom py-3">
         <div class="container">
-            <a class="navbar-brand fw-bold text-red" href="#">
-                <i class="fas fa-torii-gate me-2"></i>KAIZEN JAPANESE
-            </a>
+            <a class="navbar-brand fw-bold text-red" href="#"><i class="fas fa-torii-gate me-2"></i>KAIZEN JAPANESE</a>
             <div class="d-flex align-items-center ms-auto">
-                <select id="langSwitcher" class="form-select border-red me-3 shadow-sm">
+                <select id="langSwitcher" class="form-select border-red me-3">
                     <option value="en">English</option>
                     <option value="tm">தமிழ்</option>
                     <option value="jp">日本語</option>
                 </select>
-                <button class="btn btn-dark fw-bold rounded-pill px-4" onclick="loginAdmin()">Admin</button>
+                <button class="btn btn-dark btn-sm rounded-pill px-3" onclick="loginAdmin()">Admin</button>
             </div>
         </div>
     </nav>
+
+    
+   
 
     <header class="hero-section text-center">
         <div class="container">
@@ -57,9 +54,7 @@
                 <a href="https://wa.me/918610104213" class="btn btn-outline-dark btn-lg px-5 py-3 rounded-pill">Inquiry</a>
             </div>
         </div>
-    </header>
-
-    <section class="py-5 bg-light">
+     <section class="py-5 bg-light">
         <div class="container">
             <div class="text-center mb-5">
                 <h2 id="objTitle" class="section-title">Course Objectives & Goals</h2>
@@ -115,26 +110,31 @@
     </section>
 
     <section class="container py-5">
-        <div class="text-center mb-5">
-            <h2 id="successTitle" class="section-title">Success Stories</h2>
-        </div>
+        <h2 id="successTitle" class="section-title mb-5">Passed & Placed Students</h2>
         <div class="row g-4" id="successGrid">
             </div>
     </section>
 
-    <section id="register" class="py-5 bg-red">
-        <div class="container text-white">
-            <div class="row align-items-center">
-                <div class="col-md-6 mb-4 mb-md-0">
-                    <h2 id="regSideTitle" class="display-5 fw-bold mb-3">Join the Future of Improvement</h2>
-                    <p id="regSideDesc">Register today and start your journey towards a career in Japan. Our online classes are designed for flexibility and depth.</p>
-                </div>
+    <section id="register" class="py-5 bg-light">
+        <div class="container">
+            <div class="row justify-content-center">
                 <div class="col-md-6">
-                    <div class="card p-4 border-0 shadow-lg text-dark">
+                    <div class="card p-4 border-0 shadow-lg">
+                        <h2 id="regTitle" class="text-center fw-bold mb-4">Student Registration</h2>
                         <form id="regForm">
-                            <div class="mb-3"><input type="text" id="sName" class="form-control p-3 border-0 bg-light" placeholder="Student Name" required></div>
-                            <div class="mb-3"><input type="email" id="sEmail" class="form-control p-3 border-0 bg-light" placeholder="Email Address" required></div>
-                            <button type="submit" id="regBtn" class="btn btn-danger w-100 py-3 fw-bold rounded-pill">Complete Registration</button>
+                            <div class="mb-3"><input type="text" id="sName" class="form-control" placeholder="Full Name" required></div>
+                            <div class="mb-3"><input type="tel" id="sPhone" class="form-control" placeholder="WhatsApp Number" required></div>
+                            <div class="mb-3"><input type="email" id="sEmail" class="form-control" placeholder="Email Address" required></div>
+                            <div class="mb-3">
+                                <select id="sLevel" class="form-select" required>
+                                    <option value="" disabled selected>Select JLPT Level to Learn</option>
+                                    <option value="N5">N5 (Beginner)</option>
+                                    <option value="N4">N4 (Basic)</option>
+                                    <option value="N3">N3 (Intermediate)</option>
+                                    <option value="N2/N1">N2/N1 (Advanced)</option>
+                                </select>
+                            </div>
+                            <button type="submit" id="regBtn" class="btn btn-danger w-100 py-3 fw-bold rounded-pill">Submit Application</button>
                         </form>
                     </div>
                 </div>
@@ -142,15 +142,45 @@
         </div>
     </section>
 
-    <footer class="footer-bg">
-        <div class="container text-center">
-            <h3 class="fw-bold mb-4">Contact Information</h3>
-            <div class="row g-4 justify-content-center mb-5">
-                <div class="col-md-3"><i class="fas fa-envelope mb-2"></i><br>kaizenjapan542@gmail.com</div>
-                <div class="col-md-3"><i class="fas fa-phone mb-2"></i><br>+91 8610104213</div>
-                <div class="col-md-3"><i class="fab fa-instagram mb-2"></i><br>kaizen_ _ _ _japan</div>
+    <div id="adminSection" class="container my-5">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 class="text-red fw-bold">Admin Dashboard</h2>
+            <button class="btn btn-secondary btn-sm" onclick="$('#adminSection').hide()">Close Admin</button>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-4 border-end">
+                <h5 class="fw-bold"><i class="fas fa-plus-circle me-2"></i>Add Student Record</h5>
+                <input type="text" id="admNewName" class="form-control mb-2" placeholder="Student Name">
+                <input type="text" id="admNewDetail" class="form-control mb-2" placeholder="Detail (e.g. Passed N4 / Placed at Sony)">
+                <select id="admNewType" class="form-select mb-3">
+                    <option value="PASSED">Passed JLPT</option>
+                    <option value="PLACED">Placed Student</option>
+                </select>
+                <button class="btn btn-success w-100" onclick="addRecord()">Post to Website</button>
             </div>
-            <p class="text-muted mb-0">© 2024 Kaizen Japanese Institute. All Rights Reserved.</p>
+            
+            <div class="col-md-8 ps-md-4">
+                <h5 class="fw-bold"><i class="fas fa-users me-2"></i>New Registrations</h5>
+                <div class="table-responsive">
+                    <table class="table table-hover bg-white border">
+                        <thead class="table-dark">
+                            <tr><th>Name</th><th>Phone</th><th>Level</th><th>Email</th></tr>
+                        </thead>
+                        <tbody id="regTableBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-white py-5 mt-5">
+        <div class="container text-center">
+            <div class="row g-4 mb-4">
+                <div class="col-md-4"><i class="fas fa-envelope text-red mb-2"></i><br>kaizenjapan542@gmail.com</div>
+                <div class="col-md-4"><i class="fas fa-phone text-red mb-2"></i><br>+91 8610104213</div>
+                <div class="col-md-4"><i class="fab fa-instagram text-red mb-2"></i><br>kaizen_ _ _ _japan</div>
+            </div>
         </div>
     </footer>
 
@@ -159,66 +189,88 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         const translations = {
-            en: {
-                heroTitle: "Mastering Japanese with <span class='text-red'>Kaizen</span>",
-                heroSub: "Experience the art of language firsthand. Dive into the rich culture of Japan.",
-                objTitle: "Course Objectives & Goals",
-                fluencyTitle: "Fluency", fluencyDesc: "Become fluent in conversational Japanese through interactive exercises.",
-                teachTitle: "Teaching Methods",
-                authTitle: "Authentic Resources", authDesc: "Access Japanese literature and media for immersion.",
-                regBtn: "Complete Registration"
-            },
-            tm: {
-                heroTitle: "<span class='text-red'>கைசன்</span> மூலம் ஜப்பானிய மொழியை கற்கலாம்",
-                heroSub: "மொழியின் கலையை அனுபவியுங்கள். ஜப்பானின் கலாச்சாரத்தில் மூழ்குங்கள்.",
-                objTitle: "பாடத்தின் நோக்கங்கள் மற்றும் குறிக்கோள்கள்",
-                fluencyTitle: "சரளமான பேச்சு", fluencyDesc: "ஊடாடும் பயிற்சிகள் மூலம் சரளமாக பேசக் கற்றுக்கொள்ளுங்கள்.",
-                teachTitle: "கற்பித்தல் முறைகள்",
-                authTitle: "உண்மையான வளங்கள்", authDesc: "ஜப்பானிய இலக்கியம் மற்றும் ஊடகங்களை அணுகுங்கள்.",
-                regBtn: "பதிவை பூர்த்தி செய்க"
-            },
-            jp: {
-                heroTitle: "<span class='text-red'>改善</span>による日本語学習",
-                heroSub: "言語の芸術を直接体験してください。日本の豊かな文化に飛び込みましょう。",
-                objTitle: "コースの目的と目標",
-                fluencyTitle: "流暢さ", fluencyDesc: "インタラクティブな演習を通じて流暢な日本語を身につけます。",
-                teachTitle: "教育方法",
-                authTitle: "本格的な教材", authDesc: "日本の文学やメディアにアクセスして没入型学習を行います。",
-                regBtn: "登録を完了する"
-            }
+            en: { heroTitle: "Mastering Japanese with <span class='text-red'>Kaizen</span>", successTitle: "Passed & Placed Students", regTitle: "Student Registration", regBtn: "Submit Application" },
+            tm: { heroTitle: "<span class='text-red'>கைசன்</span> மூலம் ஜப்பானிய மொழி", successTitle: "தேர்ச்சி பெற்ற மாணவர்கள்", regTitle: "மாணவர் சேர்க்கை", regBtn: "விண்ணப்பிக்கவும்" },
+            jp: { heroTitle: "<span class='text-red'>改善</span>による日本語学習", successTitle: "合格者・就職実績", regTitle: "受講生登録", regBtn: "申し込む" }
         };
 
-        $('#langSwitcher').on('change', function() {
-            const l = $(this).val();
+        $('#langSwitcher').change(function() {
+            let l = $(this).val();
             $('#heroTitle').html(translations[l].heroTitle);
-            $('#heroSub').text(translations[l].heroSub);
-            $('#objTitle').text(translations[l].objTitle);
-            $('#fluencyTitle').text(translations[l].fluencyTitle);
-            $('#fluencyDesc').text(translations[l].fluencyDesc);
-            $('#teachTitle').text(translations[l].teachTitle);
-            $('#authTitle').text(translations[l].authTitle);
-            $('#authDesc').text(translations[l].authDesc);
+            $('#successTitle').text(translations[l].successTitle);
+            $('#regTitle').text(translations[l].regTitle);
             $('#regBtn').text(translations[l].regBtn);
         });
 
-        // Simple Registration Data Logic
-        $('#regForm').on('submit', function(e) {
+        // Registration Logic
+        $('#regForm').submit(function(e) {
             e.preventDefault();
-            let data = JSON.parse(localStorage.getItem('k_registrations')) || [];
-            data.push({ name: $('#sName').val(), email: $('#sEmail').val() });
-            localStorage.setItem('k_registrations', JSON.stringify(data));
-            alert("Success! Your registration is saved.");
+            let regs = JSON.parse(localStorage.getItem('k_regs')) || [];
+            regs.push({
+                name: $('#sName').val(),
+                phone: $('#sPhone').val(),
+                email: $('#sEmail').val(),
+                level: $('#sLevel').val()
+            });
+            localStorage.setItem('k_regs', JSON.stringify(regs));
+            alert("Registered Successfully!");
             this.reset();
+            renderAdmin();
         });
 
+        // Records (Passed/Placed) Logic
+        function addRecord() {
+            let records = JSON.parse(localStorage.getItem('k_records')) || [];
+            records.push({
+                name: $('#admNewName').val(),
+                detail: $('#admNewDetail').val(),
+                type: $('#admNewType').val()
+            });
+            localStorage.setItem('k_records', JSON.stringify(records));
+            renderRecords();
+            $('#admNewName, #admNewDetail').val('');
+        }
+
+        function renderRecords() {
+            let records = JSON.parse(localStorage.getItem('k_records')) || [];
+            $('#successGrid').empty();
+            records.forEach((r, i) => {
+                let badge = r.type === 'PASSED' ? 'bg-danger' : 'bg-primary';
+                $('#successGrid').append(`
+                    <div class="col-md-3">
+                        <div class="card k-card p-3 text-center">
+                            <span class="badge ${badge} mb-2 w-50 mx-auto">${r.type}</span>
+                            <h5 class="fw-bold mb-1">${r.name}</h5>
+                            <p class="text-muted small">${r.detail}</p>
+                            ${$('#adminSection').is(':visible') ? `<button class="btn btn-sm text-danger" onclick="deleteRecord(${i})">Delete</button>` : ''}
+                        </div>
+                    </div>
+                `);
+            });
+        }
+
+        function deleteRecord(i) {
+            let records = JSON.parse(localStorage.getItem('k_records'));
+            records.splice(i, 1);
+            localStorage.setItem('k_records', JSON.stringify(records));
+            renderRecords();
+        }
+
+        function renderAdmin() {
+            let regs = JSON.parse(localStorage.getItem('k_regs')) || [];
+            $('#regTableBody').html(regs.map(r => `<tr><td>${r.name}</td><td>${r.phone}</td><td>${r.level}</td><td>${r.email}</td></tr>`).join(''));
+        }
+
         function loginAdmin() {
-            let p = prompt("Password:");
-            if(p === "admin123") {
-                let regs = JSON.parse(localStorage.getItem('k_registrations')) || [];
-                let list = regs.map(r => `${r.name} (${r.email})`).join('\n');
-                alert("Registered Students:\n" + (list || "No registrations yet."));
+            if(prompt("Admin Password:") === "admin123") {
+                $('#adminSection').show();
+                renderAdmin();
+                renderRecords();
+                window.scrollTo(0, $('#adminSection').offset().top);
             }
         }
+
+        $(document).ready(() => { renderRecords(); });
     </script>
 </body>
 </html>
